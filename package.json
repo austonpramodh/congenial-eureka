@@ -1,0 +1,8 @@
+{
+  "name": "congenial-eureka",
+  "private": true,
+  "workspaces": [
+    "packages/*",
+    "libs/*"
+  ]
+}

@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: weather-frontend-pod
+  labels:
+    app.kubernetes.io/name: weather-frontend
+spec:
+  containers:
+    - name: weather-frontend-pod
+      image: congenial-eureka/weather-app:v1
+      # imagePullPolicy: Always
+      ports:
+        - containerPort: 80
+          name: http-web-svc
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: weather-frontend-svc
+spec:
+  selector:
+    app.kubernetes.io/name: weather-frontend
+  ports:
+    - name: http
+      port: 80
+      targetPort: http-web-svc
+  type: LoadBalancer
